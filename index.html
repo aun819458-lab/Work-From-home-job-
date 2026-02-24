@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worldwide Network Services - Jobs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            background-color: #1a237e;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        nav {
+            background-color: #3949ab;
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+        }
+        nav button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 16px;
+            margin: 0 15px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        nav button:hover {
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .section {
+            display: none;
+        }
+        .active-section {
+            display: block;
+        }
+        h2 {
+            color: #1a237e;
+            border-bottom: 2px solid #1a237e;
+            padding-bottom: 5px;
+        }
+        .plans-grid {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .plan-card {
+            flex: 1;
+            min-width: 250px;
+            background: #e8eaf6;
+            padding: 15px;
+            border-radius: 8px;
+            border-top: 5px solid #1a237e;
+        }
+        .plan-card h3 { margin-top: 0; }
+        
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .btn {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+        .btn:hover { background-color: #218838; }
+
+        /* Admin Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #1a237e;
+            color: white;
+        }
+        .admin-login-box {
+            max-width: 400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        /* Delete Button Style */
+        .btn-delete {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .btn-delete:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🌟 WORLDWIDE NETWORK SERVICES LIMITED 🌟</h1>
+        <p>India’s Leading Online E-Commerce & Business Consultant</p>
+    </header>
+
+    <nav>
+        <button onclick="showSection('home')">Home & Jobs</button>
+        <button onclick="showSection('register')">Apply Now</button>
+        <button onclick="showSection('admin')">Admin Panel</button>
+    </nav>
+
+    <!-- Home Section -->
+    <div id="home" class="container section active-section">
+        <h2>💻 Simple Copy & Paste Work | No Experience Needed</h2>
+        <p>✅ MCA Approved | ✅ Government Verified</p>
+        
+        <h3>📌 JOB DETAILS</h3>
+        <ul>
+            <li>Form Filling, Data Entry, Captcha Entry</li>
+            <li>100% Copy & Paste Work</li>
+            <li>🚫 No MLM | 🚫 No Referral | 🚫 No Sales</li>
+            <li>📱 Work From: Mobile / Laptop / PC (9:00 AM to 10:00 PM)</li>
+        </ul>
+
+        <h3>📊 PROJECT PLANS & INCOME DETAILS</h3>
+        <div class="plans-grid">
+            <div class="plan-card">
+                <h3>🟢 FORM FILLING JOB</h3>
+                <p>Registration Fee: ₹250</p>
+                <p>Income per Page: ₹30</p>
+                <p>Daily Income: ₹1,200</p>
+            </div>
+            <div class="plan-card">
+                <h3>🔵 DATA ENTRY PROJECT</h3>
+                <p>Registration Fee: ₹450</p>
+                <p>Income per Page: ₹60</p>
+                <p>Daily Income: ₹3,000</p>
+            </div>
+            <div class="plan-card">
+                <h3>🟣 CAPTCHA ENTRY</h3>
+                <p>Registration Fee: ₹750</p>
+                <p>Income per Page: ₹100</p>
+                <p>Daily Income: ₹6,000</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Registration Section -->
+    <div id="register" class="container section">
+        <h2>🚀 User Registration Form</h2>
+        <form id="registrationForm" onsubmit="saveUser(event)">
+            <div class="form-group">
+                <label>Full Name:</label>
+                <input type="text" id="userName" required placeholder="Enter your full name">
+            </div>
+            <div class="form-group">
+                <label>Phone Number:</label>
+                <input type="tel" id="userPhone" required placeholder="Enter your 10-digit number" pattern="[0-9]{10}">
+            </div>
+            <div class="form-group">
+                <label>Select Job Project:</label>
+                <select id="userJob" required>
+                    <option value="" disabled selected>Select a Job...</option>
+                    <option value="Form Filling (Fee: ₹250)">Form Filling (Fee: ₹250)</option>
+                    <option value="Data Entry (Fee: ₹450)">Data Entry (Fee: ₹450)</option>
+                    <option value="Captcha Entry (Fee: ₹750)">Captcha Entry (Fee: ₹750)</option>
+                </select>
+            </div>
+            <button type="submit" class="btn">Submit & Save</button>
+        </form>
+    </div>
+
+    <!-- Admin Section -->
+    <div id="admin" class="container section">
+        
+        <!-- Admin Login -->
+        <div id="adminLoginArea" class="admin-login-box">
+            <h2>🔒 Admin Panel Login</h2>
+            <div class="form-group">
+                <input type="password" id="adminPassword" placeholder="Enter Admin Password">
+            </div>
+            <button class="btn" onclick="checkAdminPassword()" style="background-color: #1a237e;">Login</button>
+        </div>
+
+        <!-- Admin Dashboard -->
+        <div id="adminDashboardArea" style="display: none;">
+            <h2>📊 Registered Users List</h2>
+            <button class="btn" onclick="logoutAdmin()" style="background-color: red; width: 100px; margin-bottom: 15px;">Logout</button>
+            <table id="userTable">
+                <thead>
+                    <tr>
+                        <th>Sr. No.</th>
+                        <th>Name</th>
+                        <th>Phone Number</th>
+                        <th>Job Selected</th>
+                        <th>Date & Time</th>
+                        <th>Action</th> <!-- Naya Action column add kiya gaya hai -->
+                    </tr>
+                </thead>
+                <tbody id="userTableBody">
+                    <!-- Data yahan JavaScript se aayega -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Tab Navigation
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active-section'));
+            document.getElementById(sectionId).classList.add('active-section');
+        }
+
+        // Save User Data
+        function saveUser(event) {
+            event.preventDefault(); 
+
+            const name = document.getElementById('userName').value;
+            const phone = document.getElementById('userPhone').value;
+            const job = document.getElementById('userJob').value;
+            const date = new Date().toLocaleString();
+
+            let users = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+            
+            users.push({ name, phone, job, date });
+            
+            localStorage.setItem('registeredUsers', JSON.stringify(users));
+
+            alert("Registration Successfully");
+            
+            document.getElementById('registrationForm').reset();
+            
+            loadAdminData();
+        }
+
+        // Admin Login Check
+        function checkAdminPassword() {
+            const pass = document.getElementById('adminPassword').value;
+            if (pass === "Rahul@3203") {
+                document.getElementById('adminLoginArea').style.display = "none";
+                document.getElementById('adminDashboardArea').style.display = "block";
+                document.getElementById('adminPassword').value = ""; 
+                loadAdminData();
+            } else {
+                alert("❌ Wrong Password! Kripya sahi password dalein.");
+            }
+        }
+
+        // Logout Admin
+        function logoutAdmin() {
+            document.getElementById('adminLoginArea').style.display = "block";
+            document.getElementById('adminDashboardArea').style.display = "none";
+        }
+
+        // Load Data into Table
+        function loadAdminData() {
+            const tbody = document.getElementById('userTableBody');
+            tbody.innerHTML = ""; 
+
+            let users = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+
+            if (users.length === 0) {
+                tbody.innerHTML = "<tr><td colspan='6' style='text-align:center;'>No users registered yet.</td></tr>";
+                return;
+            }
+
+            users.forEach((user, index) => {
+                let row = `<tr>
+                    <td>${index + 1}</td>
+                    <td>${user.name}</td>
+                    <td>${user.phone}</td>
+                    <td><strong style="color: #1a237e;">${user.job}</strong></td>
+                    <td>${user.date}</td>
+                    <td><button class="btn-delete" onclick="deleteUser(${index})">Delete</button></td>
+                </tr>`;
+                tbody.innerHTML += row;
+            });
+        }
+
+        // Delete User Data Function (Naya function add kiya gaya hai)
+        function deleteUser(index) {
+            let confirmDelete = confirm("Kya aap sach mein is user details ko delete karna chahte hain?");
+            if (confirmDelete) {
+                let users = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+                
+                // Array se specific user ko delete karein
+                users.splice(index, 1);
+                
+                // Updated array ko wapas localStorage me save karein
+                localStorage.setItem('registeredUsers', JSON.stringify(users));
+                
+                // Table ko dobara reload karein
+                loadAdminData();
+            }
+        }
+    </script>
+</body>
+</html>
